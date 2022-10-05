@@ -1,4 +1,5 @@
 export interface Todo {
   id: number;
-  item: string;
+  value: string;
+  checked: boolean;
 }

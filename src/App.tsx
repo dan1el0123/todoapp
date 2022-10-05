@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import AddNew from "./components/AddNew/AddNew";
 import { Todo } from "./interfaces";
+import Content from "./components/Content/Content";
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -11,7 +12,8 @@ const App: React.FC = () => {
     const id = todos.length ? todos[todos.length - 1].id + 1 : 1;
     const newTodo: Todo = {
       id,
-      item,
+      value: item,
+      checked: false,
     };
     setTodos([...todos, newTodo]);
   };
@@ -21,7 +23,11 @@ const App: React.FC = () => {
       <Header />
       <AddNew handleNewTodo={addTodo} />
       <main className="todosList">
-        {todos.length ? <ul></ul> : <p>Your todo list is empty...</p>}
+        {todos.length ? (
+          <Content todos={todos} />
+        ) : (
+          <p>Your todo list is empty...</p>
+        )}
       </main>
       {/* <ul className="todos">
         <li className="item">
