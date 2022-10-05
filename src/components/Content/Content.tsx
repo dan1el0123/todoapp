@@ -13,7 +13,11 @@ const Content = ({ todos, handleDeleteTodo, handleCheckTodo }: Props) => {
       {todos.map((item: Todo) => {
         return (
           <li className="item" key={item.id}>
-            <input type="checkbox" onChange={() => handleCheckTodo(item.id)} />
+            <input
+              type="checkbox"
+              onChange={() => handleCheckTodo(item.id)}
+              checked={item.checked}
+            />
             <label>{item.value}</label>
             <button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
           </li>

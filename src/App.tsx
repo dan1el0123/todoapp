@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import AddNew from "./components/AddNew/AddNew";
@@ -8,6 +8,13 @@ import Content from "./components/Content/Content";
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if (!storedTodos) return;
+    const todolist = JSON.parse(storedTodos);
+    setTodos(todolist);
+  }, []);
+
   const addTodo = (item: string) => {
     const id = todos.length ? todos[todos.length - 1].id + 1 : 1;
     const newTodo: Todo = {
@@ -16,11 +23,13 @@ const App: React.FC = () => {
       checked: false,
     };
     setTodos([...todos, newTodo]);
+    localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
   };
 
   const handleDelete = (id: number) => {
     const newTodos = todos.filter((todo: Todo) => todo.id !== id);
     setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   };
 
   const handleCheck = (id: number) => {
@@ -28,6 +37,7 @@ const App: React.FC = () => {
       todo.id === id ? { ...todo, checked: !todo.checked } : todo
     );
     setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   };
 
   return (
