@@ -33,3 +33,8 @@
   background-color: mediumblue;
   color: white;
 }
+
+.addButton:hover {
+  background-color: aliceblue;
+  color: mediumblue;
+}

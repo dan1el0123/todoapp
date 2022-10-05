@@ -20,13 +20,16 @@ const App: React.FC = () => {
     <div className="App">
       <Header />
       <AddNew handleNewTodo={addTodo} />
-      <ul className="todos">
+      <main className="todosList">
+        {todos.length ? <ul></ul> : <p>Your todo list is empty...</p>}
+      </main>
+      {/* <ul className="todos">
         <li className="item">
           <input type="checkbox" />
           <label>item1</label>
           <button>Delete</button>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };
