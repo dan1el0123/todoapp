@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import AddNew from "./components/AddNew/AddNew";
+import { Todo } from "./interfaces";
 
 const App: React.FC = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const addTodo = (item: string) => {
+    const id = todos.length ? todos[todos.length - 1].id + 1 : 1;
+    const newTodo: Todo = {
+      id,
+      item,
+    };
+    setTodos([...todos, newTodo]);
+  };
+  console.log(todos);
   return (
     <div className="App">
       <Header />
-      <AddNew />
+      <AddNew handleNewTodo={addTodo} />
       <ul className="todos">
         <li className="item">
           <input type="checkbox" />
