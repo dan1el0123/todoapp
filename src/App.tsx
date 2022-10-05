@@ -17,14 +17,30 @@ const App: React.FC = () => {
     };
     setTodos([...todos, newTodo]);
   };
-  console.log(todos);
+
+  const handleDelete = (id: number) => {
+    const newTodos = todos.filter((todo: Todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
+  const handleCheck = (id: number) => {
+    const newTodos = todos.map((todo: Todo) =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
+    );
+    setTodos(newTodos);
+  };
+
   return (
     <div className="App">
       <Header />
       <AddNew handleNewTodo={addTodo} />
       <main className="todosList">
         {todos.length ? (
-          <Content todos={todos} />
+          <Content
+            todos={todos}
+            handleDeleteTodo={handleDelete}
+            handleCheckTodo={handleCheck}
+          />
         ) : (
           <p>Your todo list is empty...</p>
         )}

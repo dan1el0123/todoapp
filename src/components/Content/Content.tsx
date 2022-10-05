@@ -3,17 +3,19 @@ import "./Content.css";
 
 interface Props {
   todos: Todo[];
+  handleDeleteTodo(id: number): void;
+  handleCheckTodo(id: number): void;
 }
 
-const Content = ({ todos }: Props) => {
+const Content = ({ todos, handleDeleteTodo, handleCheckTodo }: Props) => {
   return (
     <ul className="todos">
       {todos.map((item: Todo) => {
         return (
           <li className="item" key={item.id}>
-            <input type="checkbox" /* checked={item.checked}  */ />
+            <input type="checkbox" onChange={() => handleCheckTodo(item.id)} />
             <label>{item.value}</label>
-            <button>Delete</button>
+            <button onClick={() => handleDeleteTodo(item.id)}>Delete</button>
           </li>
         );
       })}
