@@ -1,17 +1,13 @@
 import React from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import AddNew from "./components/AddNew/AddNew";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App__header">
-        <h1 className="App__title">ToDo App</h1>
-      </header>
-      <div className="inputContainer">
-        <form className="inputContainer__form">
-          <input type="text" placeholder="Enter a task" />
-        </form>
-        <button type="submit">Add</button>
-      </div>
+      <Header />
+      <AddNew />
       <ul className="todos">
         <li className="item">
           <input type="checkbox" />

@@ -1,0 +1,35 @@
+.addNewForm {
+  width: 95%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid mediumblue;
+  margin: 0.25rem auto;
+  overflow: hidden;
+}
+
+.addNewForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.addInput {
+  flex-grow: 1;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+.addButton {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: mediumblue;
+  color: white;
+}
